@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="python@sftp://cike@202.38.247.163:2019/usr/bin/python" />
+        <remote-mappings server-id="python@sftp://cike@202.38.247.163:2019/home/cike/anaconda3/envs/mindspore_graph_tm/bin/python" />
+        <remote-mappings server-id="python@sftp://cike@202.38.247.163:2019/home/cike/anaconda3/envs/czb_graph_tm/bin/python" />
+      </list>
+    </list>
+  </component>
+</project>

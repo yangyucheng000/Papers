@@ -1,0 +1,247 @@
+# 1.This file shows the parsed IR info when graph evaluating failed to help find the problem.
+# 2.You can search the last `------------------------>` to the node which is inferred failed.
+# 3.Refer to https://www.mindspore.cn/search?inputValue=analyze_fail.ir to get more instructions.
+# ===============================================================================
+
+subgraph attr:
+skip_auto_parallel_compile : 1
+subgraph instance: construct.Default.1 : 0x118ba750
+# In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:39/    def construct(self, gradients):/
+subgraph @construct.Default.1(%para1_gradients, %para2_step, %para3_start_decay_steps, %para4_start_decay, %para5_learning_rate, %para6_encoder.embeddings.make_embedding.0.0.embedding_table, %para7_encoder.gcn.layer_1.weight, %para8_encoder.gcn.layer_1.bias, %para9_encoder.gcn.layer_1.weight_highway, %para10_encoder.gcn.layer_1.bias_highway, %para11_encoder.gcn.layer_2.weight, %para12_encoder.gcn.layer_2.bias, %para13_encoder.gcn.layer_2.weight_highway, %para14_encoder.gcn.layer_2.bias_highway, %para15_decoder.embeddings.make_embedding.0.0.embedding_table, %para16_decoder.rnn.layers.0.weight_ih, %para17_decoder.rnn.layers.0.weight_hh, %para18_decoder.rnn.layers.0.bias_ih, %para19_decoder.rnn.layers.0.bias_hh, %para20_decoder.attn.linear_in.weight, %para21_decoder.attn.linear_out.weight, %para22_generator.0.weight, %para23_generator.0.bias, %para24_global_step, %para25_accum.encoder.embeddings.make_embedding.0.0.embedding_table, %para26_accum.encoder.gcn.layer_1.weight, %para27_accum.encoder.gcn.layer_1.bias, %para28_accum.encoder.gcn.layer_1.weight_highway, %para29_accum.encoder.gcn.layer_1.bias_highway, %para30_accum.encoder.gcn.layer_2.weight, %para31_accum.encoder.gcn.layer_2.bias, %para32_accum.encoder.gcn.layer_2.weight_highway, %para33_accum.encoder.gcn.layer_2.bias_highway, %para34_accum.decoder.embeddings.make_embedding.0.0.embedding_table, %para35_accum.decoder.rnn.layers.0.weight_ih, %para36_accum.decoder.rnn.layers.0.weight_hh, %para37_accum.decoder.rnn.layers.0.bias_ih, %para38_accum.decoder.rnn.layers.0.bias_hh, %para39_accum.decoder.attn.linear_in.weight, %para40_accum.decoder.attn.linear_out.weight, %para41_accum.generator.0.weight, %para42_accum.generator.0.bias, %para43_stat.encoder.embeddings.make_embedding.0.0.embedding_table, %para44_stat.encoder.gcn.layer_1.weight, %para45_stat.encoder.gcn.layer_1.bias, %para46_stat.encoder.gcn.layer_1.weight_highway, %para47_stat.encoder.gcn.layer_1.bias_highway, %para48_stat.encoder.gcn.layer_2.weight, %para49_stat.encoder.gcn.layer_2.bias, %para50_stat.encoder.gcn.layer_2.weight_highway, %para51_stat.encoder.gcn.layer_2.bias_highway, %para52_stat.decoder.embeddings.make_embedding.0.0.embedding_table, %para53_stat.decoder.rnn.layers.0.weight_ih, %para54_stat.decoder.rnn.layers.0.weight_hh, %para55_stat.decoder.rnn.layers.0.bias_ih, %para56_stat.decoder.rnn.layers.0.bias_hh, %para57_stat.decoder.attn.linear_in.weight, %para58_stat.decoder.attn.linear_out.weight, %para59_stat.generator.0.weight, %para60_stat.generator.0.bias, %para61_momentum) {
+  %1([CNode]24) = S-Prim-add(%para2_step, I64(1))
+      : (<Ref[Tensor[Float32]], (1)>, <Int64, NoShape>) -> (<Tensor[Float32], (1)>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:41/        self.assign_step(self._step, self._step + 1)/
+  %2([CNode]25) = S-Prim-Assign[output_names=["output"], side_effect_mem=Bool(1), input_names=["ref", "value"]](%para2_step, %1)
+      : (<Ref[Tensor[Float32]], (1)>, <Tensor[Float32], (1)>) -> (<Tensor[Float32], (1)>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:41/        self.assign_step(self._step, self._step + 1)/
+  %3([CNode]26) = StopGradient(%2)
+      : (<Tensor[Float32], (1)>) -> (<Tensor[Float32], (1)>)
+      #scope: (Default)
+  %4([CNode]27) = S-Prim-is_not(%para3_start_decay_steps, None)
+      : (<Ref[Tensor[Float32]], (1)>, <None, NoShape>) -> (<Bool, NoShape>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:43/        if ((self.start_decay_steps is not None) and (/
+  %5([CNode]29) = call @bool_.28(%4)
+      : (<Bool, NoShape>) -> (<Bool, NoShape>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:43/        if ((self.start_decay_steps is not None) and (/
+  %6([CNode]30) = Switch(%5, call @↰construct.Default.31, call @↱construct.Default.32)
+      : (<Bool, NoShape>, <Func, NoShape>, <Func, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:43/        if ((self.start_decay_steps is not None) and (/
+  %7([CNode]33) = %6()
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:43/        if ((self.start_decay_steps is not None) and (/
+  %8([CNode]34) = call @bool_.28(%7)
+      : (<Tensor[Bool], (1)>) -> (<Tensor[Bool], (1)>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:43/        if ((self.start_decay_steps is not None) and (/
+  %9([CNode]35) = Switch(%8, call @✓construct.Default.5, call @✗construct.Default.7)
+      : (<Tensor[Bool], (1)>, <Func, NoShape>, <Func, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:43/        if ((self.start_decay_steps is not None) and (/
+
+#------------------------> 0
+  %10([CNode]36) = %9()
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:43/        if ((self.start_decay_steps is not None) and (/
+  %11([CNode]37) = Depend[side_effect_propagate=I64(1)](%10, %3)
+      : (<null>, <Tensor[Float32], (1)>) -> (<null>)
+      #scope: (Default)
+  Return(%11)
+      : (<null>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:43/        if ((self.start_decay_steps is not None) and (/
+}
+# Order:
+#   1: @construct.Default.1:[CNode]24{[0]: ValueNode<DoSignaturePrimitive> S-Prim-add, [1]: step, [2]: ValueNode<Int64Imm> 1}
+#   2: @construct.Default.1:[CNode]25{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Assign, [1]: step, [2]: [CNode]24}
+#   3: @construct.Default.1:фlr{[0]: ValueNode<FuncGraph> get_lr.38}
+#   4: @construct.Default.1:[CNode]27{[0]: ValueNode<DoSignaturePrimitive> S-Prim-is_not, [1]: start_decay_steps, [2]: ValueNode<None> None}
+#   5: @construct.Default.1:[CNode]29{[0]: ValueNode<FuncGraph> bool_.28, [1]: [CNode]27}
+#   6: @construct.Default.1:[CNode]30{[0]: ValueNode<Primitive> Switch, [1]: [CNode]29, [2]: ValueNode<FuncGraph> ↰construct.Default.31, [3]: ValueNode<FuncGraph> ↱construct.Default.32}
+#   7: @construct.Default.1:[CNode]33{[0]: [CNode]30}
+#   8: @construct.Default.1:[CNode]34{[0]: ValueNode<FuncGraph> bool_.28, [1]: [CNode]33}
+#   9: @construct.Default.1:[CNode]35{[0]: ValueNode<Primitive> Switch, [1]: [CNode]34, [2]: ValueNode<FuncGraph> ✓construct.Default.5, [3]: ValueNode<FuncGraph> ✗construct.Default.7}
+#  10: @construct.Default.1:[CNode]36{[0]: [CNode]35}
+#  11: @construct.Default.1:[CNode]39{[0]: ValueNode<Primitive> Return, [1]: [CNode]37}
+
+
+subgraph attr:
+skip_auto_parallel_compile : 1
+subgraph instance: ✓construct.Default.5 : 0x10a9cd40
+# In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:43/        if ((self.start_decay_steps is not None) and (/
+subgraph @✓construct.Default.5 parent: [subgraph @construct.Default.1]() {
+  %1([CNode]40) = S-Prim-Assign[output_names=["output"], side_effect_mem=Bool(1), input_names=["ref", "value"]](%para4_start_decay, I64(1))
+      : (<Ref[Tensor[Int32]], (1)>, <Int64, NoShape>) -> (<Tensor[Int32], (1)>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:45/            self.assign_start_decay(self.start_decay, 1)/
+  %2([CNode]41) = StopGradient(%1)
+      : (<Tensor[Int32], (1)>) -> (<Tensor[Int32], (1)>)
+      #scope: (Default)
+
+#------------------------> 1
+  %3([CNode]42) = call @↓construct.Default.21()
+      #scope: (Default)
+  %4([CNode]43) = Depend[side_effect_propagate=I64(1)](%3, %2)
+      : (<null>, <Tensor[Int32], (1)>) -> (<null>)
+      #scope: (Default)
+  Return(%4)
+      : (<null>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:43/        if ((self.start_decay_steps is not None) and (/
+}
+# Order:
+#   1: @✓construct.Default.5:[CNode]40{[0]: [CNode]40, [1]: ValueNode<Int64Imm> 1, [2]: ValueNode<Int> Int32}
+#   2: @✓construct.Default.5:[CNode]40{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Assign, [1]: start_decay, [2]: ValueNode<Int64Imm> 1}
+#   3: @✓construct.Default.5:[CNode]44{[0]: ValueNode<Primitive> Return, [1]: [CNode]43}
+#   4: @✓construct.Default.5:[CNode]42{[0]: ValueNode<FuncGraph> ↓construct.Default.21}
+
+
+subgraph attr:
+after_block : 1
+skip_auto_parallel_compile : 1
+subgraph instance: ↓construct.Default.21 : 0xaf5d620
+# In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:43/        if ((self.start_decay_steps is not None) and (/
+subgraph @↓construct.Default.21 parent: [subgraph @construct.Default.1]() {
+  %1([CNode]45) = S-Prim-MakeTuple()
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+  %2([CNode]46) = S-Prim-MakeTuple()
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+  %3([CNode]47) = S-Prim-make_dict(%1, %2)
+      : (<Tuple[], TupleShape()>, <Tuple[], TupleShape()>) -> (<Dictionary[[],[]], NoShape>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+  %4([CNode]48) = PyInterpret[side_effect_io=Bool(1)](Script['Tensor([1], dtype=mindspore.int32)'], {"0x830f450": InterpretedObject, "0x830f510": ClassType, "0x830f110": Module}, %3)
+      : (<String, NoShape>, <Dictionary[[self,Tensor,mindspore,],[External,TypeType,External]], NoShape>, <Dictionary[[],[]], NoShape>) -> (<Tensor[Int32], (1)>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+  %5([CNode]49) = S-Prim-equal(%para4_start_decay, %4)
+      : (<Ref[Tensor[Int32]], (1)>, <Tensor[Int32], (1)>) -> (<Tensor[Bool], (1)>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+  %6([CNode]50) = call @bool_.28(%5)
+      : (<Tensor[Bool], (1)>) -> (<Tensor[Bool], (1)>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+  %7([CNode]51) = Switch(%6, call @✓↓construct.Default.8, call @✗↓construct.Default.11)
+      : (<Tensor[Bool], (1)>, <Func, NoShape>, <Func, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+
+#------------------------> 2
+  %8([CNode]52) = %7()
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+  Return(%8)
+      : (<null>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+}
+# Order:
+#   1: @↓construct.Default.21:[CNode]45{[0]: ValueNode<DoSignaturePrimitive> S-Prim-MakeTuple}
+#   2: @↓construct.Default.21:[CNode]46{[0]: ValueNode<DoSignaturePrimitive> S-Prim-MakeTuple}
+#   3: @↓construct.Default.21:[CNode]47{[0]: ValueNode<DoSignaturePrimitive> S-Prim-make_dict, [1]: [CNode]45, [2]: [CNode]46}
+#   4: @↓construct.Default.21:[CNode]48{[0]: ValueNode<Primitive> PyInterpret, [1]: ValueNode<Script> 'Tensor([1], dtype=mindspore.int32)', [2]: ValueNode<ValueDictionary> {'self': InterpretedObject: 'Namespace:onmt.utils.optimizers..<Optimizer::139928447516752>', 'Tensor': class 'mindspore.common.tensor.Tensor', 'mindspore': Module: 'Namespace:mindspore'}, [3]: [CNode]47}
+#   5: @↓construct.Default.21:[CNode]49{[0]: ValueNode<DoSignaturePrimitive> S-Prim-equal, [1]: start_decay, [2]: [CNode]48}
+#   6: @↓construct.Default.21:[CNode]50{[0]: ValueNode<FuncGraph> bool_.28, [1]: [CNode]49}
+#   7: @↓construct.Default.21:[CNode]51{[0]: ValueNode<Primitive> Switch, [1]: [CNode]50, [2]: ValueNode<FuncGraph> ✓↓construct.Default.8, [3]: ValueNode<FuncGraph> ✗↓construct.Default.11}
+#   8: @↓construct.Default.21:[CNode]52{[0]: [CNode]51}
+#   9: @↓construct.Default.21:[CNode]53{[0]: ValueNode<Primitive> Return, [1]: [CNode]52}
+
+
+subgraph attr:
+skip_auto_parallel_compile : 1
+subgraph instance: ✗↓construct.Default.11 : 0x80e9660
+# In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+subgraph @✗↓construct.Default.11 parent: [subgraph @construct.Default.1]() {
+
+#------------------------> 3
+  %1([CNode]54) = call @↓↓construct.Default.22()
+      #scope: (Default)
+  Return(%1)
+      : (<null>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+}
+# Order:
+#   1: @✗↓construct.Default.11:[CNode]55{[0]: ValueNode<Primitive> Return, [1]: [CNode]54}
+#   2: @✗↓construct.Default.11:[CNode]54{[0]: ValueNode<FuncGraph> ↓↓construct.Default.22}
+
+
+subgraph attr:
+after_block : 1
+skip_auto_parallel_compile : 1
+subgraph instance: ↓↓construct.Default.22 : 0x8160ee0
+# In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:46/        if self.start_decay == Tensor([1], dtype=mindspore.int32):/
+subgraph @↓↓construct.Default.22 parent: [subgraph @construct.Default.1]() {
+  %1([CNode]56) = call @bool_.28(F32(3))
+      : (<Float32, NoShape>) -> (<Bool, NoShape>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:51/        if self.max_grad_norm:/
+  %2([CNode]57) = Switch(%1, call @✓↓↓construct.Default.23, call @✗↓↓construct.Default.58)
+      : (<Bool, NoShape>, <Func, NoShape>, <Func, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:51/        if self.max_grad_norm:/
+
+#------------------------> 4
+  %3([CNode]59) = %2()
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:51/        if self.max_grad_norm:/
+  Return(%3)
+      : (<null>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:51/        if self.max_grad_norm:/
+}
+# Order:
+#   1: @↓↓construct.Default.22:[CNode]56{[0]: ValueNode<FuncGraph> bool_.28, [1]: ValueNode<FP32Imm> 3}
+#   2: @↓↓construct.Default.22:[CNode]57{[0]: ValueNode<Primitive> Switch, [1]: [CNode]56, [2]: ValueNode<FuncGraph> ✓↓↓construct.Default.23, [3]: ValueNode<FuncGraph> ✗↓↓construct.Default.58}
+#   3: @↓↓construct.Default.22:[CNode]59{[0]: [CNode]57}
+#   4: @↓↓construct.Default.22:[CNode]60{[0]: ValueNode<Primitive> Return, [1]: [CNode]59}
+
+
+subgraph attr:
+skip_auto_parallel_compile : 1
+subgraph instance: ✓↓↓construct.Default.23 : 0x82a9420
+# In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:51/        if self.max_grad_norm:/
+subgraph @✓↓↓construct.Default.23 parent: [subgraph @construct.Default.1]() {
+  %1([CNode]61) = $(construct.Default.1):MakeTuple(%para6_encoder.embeddings.make_embedding.0.0.embedding_table, %para7_encoder.gcn.layer_1.weight, %para8_encoder.gcn.layer_1.bias, %para9_encoder.gcn.layer_1.weight_highway, %para10_encoder.gcn.layer_1.bias_highway, %para11_encoder.gcn.layer_2.weight, %para12_encoder.gcn.layer_2.bias, %para13_encoder.gcn.layer_2.weight_highway, %para14_encoder.gcn.layer_2.bias_highway, %para15_decoder.embeddings.make_embedding.0.0.embedding_table, %para16_decoder.rnn.layers.0.weight_ih, %para17_decoder.rnn.layers.0.weight_hh, %para18_decoder.rnn.layers.0.bias_ih, %para19_decoder.rnn.layers.0.bias_hh, %para20_decoder.attn.linear_in.weight, %para21_decoder.attn.linear_out.weight, %para22_generator.0.weight, %para23_generator.0.bias)
+      : (<Ref[Tensor[Float32]], (4664, 800)>, <Ref[Tensor[Float32]], (3, 800, 800)>, <Ref[Tensor[Float32]], (3, 1, 800)>, <Ref[Tensor[Float32]], (800, 800)>, <Ref[Tensor[Float32]], (1, 800)>, <Ref[Tensor[Float32]], (3, 800, 800)>, <Ref[Tensor[Float32]], (3, 1, 800)>, <Ref[Tensor[Float32]], (800, 800)>, <Ref[Tensor[Float32]], (1, 800)>, <Ref[Tensor[Float32]], (6186, 800)>, <Ref[Tensor[Float32]], (3200, 1600)>, <Ref[Tensor[Float32]], (3200, 800)>, <Ref[Tensor[Float32]], (3200)>, <Ref[Tensor[Float32]], (3200)>, <Ref[Tensor[Float32]], (800, 800)>, <Ref[Tensor[Float32]], (800, 1600)>, <Ref[Tensor[Float32]], (6186, 800)>, <Ref[Tensor[Float32]], (6186)>) -> (<Tuple[Ref[Tensor[Float32]]*18], TupleShape((4664, 800), (3, 800, 800), (3, 1, 800), (800, 800), (1, 800), (3, 800, 800), (3, 1, 800), (800, 800), (1, 800), (6186, 800), (3200, 1600), (3200, 800), (3200), (3200), (800, 800), (800, 1600), (6186, 800), (6186))>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:52/            param = ops.clip_by_global_norm(self.parameters, self.max_grad_norm)/
+  %2(param) = call @clip_by_global_norm.62(%1, F32(3))
+      : (<Tuple[Ref[Tensor[Float32]]*18], TupleShape((4664, 800), (3, 800, 800), (3, 1, 800), (800, 800), (1, 800), (3, 800, 800), (3, 1, 800), (800, 800), (1, 800), (6186, 800), (3200, 1600), (3200, 800), (3200), (3200), (800, 800), (800, 1600), (6186, 800), (6186))>, <Float32, NoShape>) -> (<Tuple[Tensor[Float32]*18], TupleShape((4664, 800), (3, 800, 800), (3, 1, 800), (800, 800), (1, 800), (3, 800, 800), (3, 1, 800), (800, 800), (1, 800), (6186, 800), (3200, 1600), (3200, 800), (3200), (3200), (800, 800), (800, 1600), (6186, 800), (6186))>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:52/            param = ops.clip_by_global_norm(self.parameters, self.max_grad_norm)/
+
+#------------------------> 5
+  %3([CNode]63) = S-Prim-Assign[output_names=["output"], side_effect_mem=Bool(1), input_names=["ref", "value"]](%1, %2)
+      : (<Tuple[Ref[Tensor[Float32]]*18], TupleShape((4664, 800), (3, 800, 800), (3, 1, 800), (800, 800), (1, 800), (3, 800, 800), (3, 1, 800), (800, 800), (1, 800), (6186, 800), (3200, 1600), (3200, 800), (3200), (3200), (800, 800), (800, 1600), (6186, 800), (6186))>, <Tuple[Tensor[Float32]*18], TupleShape((4664, 800), (3, 800, 800), (3, 1, 800), (800, 800), (1, 800), (3, 800, 800), (3, 1, 800), (800, 800), (1, 800), (6186, 800), (3200, 1600), (3200, 800), (3200), (3200), (800, 800), (800, 1600), (6186, 800), (6186))>) -> (<null>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:53/            self.assign_parameter(self.parameters, param)/
+  %4([CNode]64) = StopGradient(%3)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+  %5([CNode]66) = call @↓↓↓construct.Default.65()
+      #scope: (Default)
+  %6([CNode]67) = Depend[side_effect_propagate=I64(1)](%5, %4)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+  Return(%6)
+      : (<null>)
+      #scope: (Default)
+      # In file /home/cike/some_project/amr2text/onmt/utils/optimizers.py:51/        if self.max_grad_norm:/
+}
+# Order:
+#   1: @✓↓↓construct.Default.23:param{[0]: ValueNode<FuncGraph> clip_by_global_norm.62, [1]: [CNode]61, [2]: ValueNode<FP32Imm> 3}
+#   2: @✓↓↓construct.Default.23:[CNode]63{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Assign, [1]: [CNode]61, [2]: param}
+#   3: @✓↓↓construct.Default.23:[CNode]68{[0]: ValueNode<Primitive> Return, [1]: [CNode]67}
+#   4: @✓↓↓construct.Default.23:[CNode]66{[0]: ValueNode<FuncGraph> ↓↓↓construct.Default.65}
+
+
+#===============================================================================
+# num of function graphs in stack: 6

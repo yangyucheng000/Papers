@@ -1,0 +1,33 @@
+{
+
+    "training_config": {
+        "output_dir": "./output_multi_align/",
+        "do_train": true,
+        "seed": 0,
+        "learning_rate": 5e-5,
+        "batch_size":8,
+        "num_epoch": 6,
+        "use_cuda": true,
+        "optimizer_type": "adam", 
+        "per_device_train_batch_size": 8
+
+    },
+    
+    "model_config": {
+        "pretrained_model": "t5-base",
+        "score_model_path": "/path/to/score_model",
+        "multi_task": true,
+        "auto_weights": false, 
+        "score_model": false, 
+        "align_with_rl": true, 
+        "rationale_weight": 3.0,
+        "align_weight": 0.03
+    },
+
+    "data_config": {
+        "task_name": "copa",
+        "train_predict": false, 
+        "test_predict": false, 
+        "las_data": false
+    }
+}

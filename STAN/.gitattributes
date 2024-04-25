@@ -1,0 +1,7 @@
+*.pkl linguist-language=python
+*.txt linguist-language=python
+*.ckpt linguist-language=python
+*.sh linguist-language=python
+*.src linguist-language=python
+*.tgt linguist-language=python
+*.zip linguist-language=python
